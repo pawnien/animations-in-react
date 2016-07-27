@@ -1,0 +1,35 @@
+.block {
+ height: 120px;
+ width: 120px;
+ color: white;
+ background: blue;
+ float: left;
+ margin-left: 20px;
+ margin-bottom: 20px;
+ box-sizing: border-box;
+}
+.block-enter {
+  opacity: 0.01;
+  width: 0;
+}
+
+.block-enter.block-enter-active {
+  opacity: 1;
+  width: 120px;
+  transition: all 500ms ease-in;
+}
+
+.block-leave {
+  opacity: 1;
+  width: 120px;
+}
+
+.block-leave.block-leave-active {
+  opacity: 0.01;
+  width: 0;
+  transition: all 500ms ease-in;
+}
+
+.clear-fix {
+  clear: both;
+}
