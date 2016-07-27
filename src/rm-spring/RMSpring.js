@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Motion, spring } from 'react-motion';
-import './RMSpring.css';
 
 class RMSpring extends Component {
 
@@ -18,7 +17,7 @@ class RMSpring extends Component {
             border: '1px solid red',
             transform: `rotate(${value.x}deg)`
           }
-
+          
           return <div style={style}>{value.x}</div>
         }}
       </Motion>

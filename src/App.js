@@ -18,23 +18,23 @@ class App extends Component {
           <h2>Welcome to React</h2>
         </div>
         <div className="content-container">
-          {/*
+        {/*
           <h4> Animation with pure CSS </h4>
           <PlainCss />
-          */}
+        */}
+        {/*
           <h4> Animation with ReactCSSTransitionGroup </h4>
           <CSSTransition />
-        
+        */}
           
           
           <div className="react-motion-container">
-            {/*
+           {/*
               <RMSpring /> 
               <RMSpring2 />
-            */}
-            {/*
+           */}
+            
             <RMTransitionMotion />
-            */}
           </div>
         </div>
 

@@ -1,0 +1,7 @@
+.block {
+	color: white;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 20px;
+	box-sizing: border-box;	
+}
