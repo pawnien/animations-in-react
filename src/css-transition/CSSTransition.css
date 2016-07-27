@@ -2,12 +2,23 @@
  height: 120px;
  width: 120px;
  color: white;
- background: blue;
  float: left;
  margin-left: 20px;
  margin-bottom: 20px;
  box-sizing: border-box;
 }
+
+.block-appear {
+  opacity: 0.01;
+  width: 0;
+}
+
+.block-appear.block-appear-active {
+  width: 120px;
+  opacity: 1;
+  transition: all 1200ms ease-in;
+}
+
 .block-enter {
   opacity: 0.01;
   width: 0;

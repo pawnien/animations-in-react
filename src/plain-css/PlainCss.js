@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-import './CSSTransition.css';
+import './PlainCss.css';
 
-class CSSTransition extends Component {
+class PlainCss extends Component {
 
   constructor(){
     super();
@@ -57,10 +57,11 @@ class CSSTransition extends Component {
       :  this.state.blocks.filter((block) => block.id % 2 === 0);
 
     const blocks = blocksState.map((block) => {
+
       return(
         <div 
           key={block.id}
-          className="block"
+          className ='block'
           onClick={() => this.handleBlockRemove(block.id)}
         >
           {block.id}
@@ -69,7 +70,7 @@ class CSSTransition extends Component {
     })
 
     return (
-      <div className="css-transition">
+      <div className="plain-css">
       
         <div>
           <button
@@ -83,22 +84,14 @@ class CSSTransition extends Component {
           >
             Click to add new block
           </button>
-        </div>  
-
+        </div>
         <div className="blocks">
-          <ReactCSSTransitionGroup 
-            transitionName="block" 
-            transitionAppear={true}
-            transitionEnterTimeout={500} 
-            transitionLeaveTimeout={500}
-          >
-            {blocks}  
-          </ReactCSSTransitionGroup>
-        </div>   
+          {blocks} 
+        </div>  
         <div className="clear-fix"></div>
       </div>
     );
   }
 }
 
-export default CSSTransition;
+export default PlainCss;
