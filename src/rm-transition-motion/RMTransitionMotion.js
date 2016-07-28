@@ -16,6 +16,7 @@ class RMTransitionMotion extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleBlockRemove = this.handleBlockRemove.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleHideAll = this.handleHideAll.bind(this);
   }
 
   handleClick() {
@@ -49,6 +50,12 @@ class RMTransitionMotion extends Component {
     }
   }
 
+  handleHideAll() {
+    this.setState({
+      display: 'none'
+    });
+  }
+
   willLeave() {
     return {
       width: spring(0)
@@ -62,12 +69,16 @@ class RMTransitionMotion extends Component {
   }
 
   render() {
-    console.debug(this.state); 
+    let blocksState 
 
-    const blocksState = this.state.display === 'all'
+    if(this.state.display === 'none') {
+      blocksState = [];
+    } else {
+      blocksState = this.state.display === 'all'
       ?  this.state.blocks
       :  this.state.blocks.filter((block) => block.id % 2 === 0);
-
+    }
+    
     return (
       <div className="rm-transition-motion">
       
@@ -82,6 +93,11 @@ class RMTransitionMotion extends Component {
             onClick={this.handleClick}
           >
             Click to add new block
+          </button>
+          <button
+            onClick={this.handleHideAll}
+          >
+            Click to hide all
           </button>
         </div>  
           <TransitionMotion
