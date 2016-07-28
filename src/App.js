@@ -6,6 +6,7 @@ import CSSTransition from './css-transition/CSSTransition';
 import RMSpring from './rm-spring/RMSpring';
 import RMSpring2 from './rm-spring-2/RMSpring2';
 import RMTransitionMotion from './rm-transition-motion/RMTransitionMotion';
+import ReactMotionUIPack from './react-motion-UI-pack/ReactMotionUIPack';
 
 class App extends Component {
   constructor(...args){
@@ -34,9 +35,10 @@ class App extends Component {
         </div>
         <div className="switches-container">
         {
-          ['CSS', 'ReactCSSTransitionGroup', 'ReactMotionSpring', 'ReactMotionTransitionMotion'].map(presentationPart => {
+          ['CSS', 'ReactCSSTransitionGroup', 'ReactMotionSpring', 'ReactMotionTransitionMotion', 'ReactMotionUIPack'].map(presentationPart => {
             return (
               <div 
+                key={presentationPart}
                 className="checkbox"
               >
                 <input 
@@ -84,6 +86,10 @@ class App extends Component {
           ? <RMTransitionMotion />
           : null 
         }  
+
+        { this.state.visibility['ReactMotionUIPack']
+          ? <ReactMotionUIPack/>  : null
+        }
         </div>
 
       </div>

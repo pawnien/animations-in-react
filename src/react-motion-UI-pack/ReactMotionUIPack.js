@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { spring, TransitionMotion } from 'react-motion';
-import './RMTransitionMotion.css';
+import './ReactMotionUIPack.css';
+import Transition from 'react-motion-ui-pack'
 
-class RMTransitionMotion extends Component {
+class ReactMotionUIPack extends Component {
 
   constructor(){
     super();
@@ -16,6 +17,7 @@ class RMTransitionMotion extends Component {
     this.handleClick = this.handleClick.bind(this);
     this.handleBlockRemove = this.handleBlockRemove.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
+    this.handleHideAll = this.handleHideAll.bind(this);
   }
 
   handleClick() {
@@ -49,24 +51,36 @@ class RMTransitionMotion extends Component {
     }
   }
 
-  willLeave() {
-    return {
-      width: spring(0)
-    };
-  }
-
-  willEnter() {
-    return {
-      width: {val: 120}
-    };
+  handleHideAll() {
+    this.setState({
+      display: 'none'
+    });
   }
 
   render() {
-    console.debug(this.state); 
-
     const blocksState = this.state.display === 'all'
       ?  this.state.blocks
       :  this.state.blocks.filter((block) => block.id % 2 === 0);
+
+    let availableBlocks; 
+
+    if(this.state.display === 'none') {
+      availableBlocks = [];
+    } else {
+      availableBlocks = blocksState;
+    }
+    const blocks = availableBlocks.map((block) => {
+
+      return(
+        <div 
+          key={block.id}
+          className ='block'
+          onClick={() => this.handleBlockRemove(block.id)}
+        >
+          {block.id}
+        </div>
+      )
+    })
 
     return (
       <div className="rm-transition-motion">
@@ -83,38 +97,30 @@ class RMTransitionMotion extends Component {
           >
             Click to add new block
           </button>
-        </div>  
-          <TransitionMotion
-            willLeave={this.willLeave}
-            willEnter={this.willEnter}
-            styles = { 
-              blocksState.map((block) => {
-                return {
-                  key: `key-${block.id}`,
-                  data: block.id,
-                  style: {width: 120, height: 120}
-                }
-              }) 
-            }
+
+          <button
+            onClick={this.handleHideAll}
           >
-          {
-            interpolatedStyles => (
-              <div>
-                {interpolatedStyles.map(config => {
-                  console.debug(config);
-                  return <div className="block" 
-                    key={config.key} 
-                    onClick = { () => this.handleBlockRemove(config.data)}
-                    style={{...config.style, border: '1px solid red'}} />
-                })}
-              </div>)
-          }
-        
-          </TransitionMotion>
+            Click to hide all
+          </button>
+        </div>  
+          <Transition
+            component="div"
+            enter={{
+              width: spring(120),
+              opacity: 1,
+            }}
+            leave={{
+              width: 0,
+              opacity: 0,
+            }}
+          >  
+            {blocks}
+          </Transition>
         <div className="clear-fix"></div>
       </div>
     );
   }
 }
 
-export default RMTransitionMotion;
+export default ReactMotionUIPack;

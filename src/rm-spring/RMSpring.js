@@ -4,7 +4,6 @@ import { Motion, spring } from 'react-motion';
 class RMSpring extends Component {
 
   render() {
-    console.debug('Spring', spring);
     return (
       <Motion defaultStyle={{x: 0}} style={{x: spring(360)}}>
         {value => {

@@ -49,8 +49,7 @@ class PlainCss extends Component {
     }
   }
 
-  render() {
-    console.debug(this.state); 
+  render() { 
 
     const blocksState = this.state.display === 'all'
       ?  this.state.blocks
