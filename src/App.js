@@ -8,6 +8,21 @@ import RMSpring2 from './rm-spring-2/RMSpring2';
 import RMTransitionMotion from './rm-transition-motion/RMTransitionMotion';
 
 class App extends Component {
+  constructor(...args){
+    super(...args);
+
+    this.state = {
+      visibility: {}
+    }
+  }
+
+  toggleVisibility(param) {
+    const visibility = this.state.visibility;
+    visibility[param] = !this.state.visibility[param];
+    this.setState({
+      visibility: visibility
+    });
+  }
 
   render() {
 
@@ -17,25 +32,58 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>Welcome to React</h2>
         </div>
+        <div className="switches-container">
+        {
+          ['CSS', 'ReactCSSTransitionGroup', 'ReactMotionSpring', 'ReactMotionTransitionMotion'].map(presentationPart => {
+            return (
+              <div 
+                className="checkbox"
+              >
+                <input 
+                  id={presentationPart}
+                  type="checkbox"
+                  checked={this.state.visibility[presentationPart]}
+                  onChange={()=> this.toggleVisibility(presentationPart)}   
+                />
+                <label htmlFor={presentationPart}>
+                  {presentationPart}
+                </label> 
+              </div>
+            )
+          })
+        }          
+        </div>
+
         <div className="content-container">
-        {/*
-          <h4> Animation with pure CSS </h4>
-          <PlainCss />
-        */}
-        {/*
-          <h4> Animation with ReactCSSTransitionGroup </h4>
+        {
+          this.state.visibility['CSS'] 
+          ? <div>
+              <h4> CSS </h4>
+              <PlainCss />
+            </div>
+          : null
+        }
+        {
+          this.state.visibility['ReactCSSTransitionGroup'] 
+          ? <div>
+              <h4> ReactCSSTransitionGroup </h4>
           <CSSTransition />
-        */}
-          
-          
-          <div className="react-motion-container">
-           {/*
+            </div>
+          : null
+        }  
+        { 
+          this.state.visibility['ReactMotionSpring'] 
+          ? <div className="react-motion-container">
               <RMSpring /> 
               <RMSpring2 />
-           */}
-            
-            <RMTransitionMotion />
-          </div>
+            </div>
+          : null  
+        }  
+        {
+          this.state.visibility['ReactMotionTransitionMotion'] 
+          ? <RMTransitionMotion />
+          : null 
+        }  
         </div>
 
       </div>
