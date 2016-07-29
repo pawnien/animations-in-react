@@ -37,28 +37,28 @@ class App extends Component {
         {
           ['CSS', 'ReactCSSTransitionGroup', 'ReactMotionSpring', 'ReactMotionTransitionMotion', 'ReactMotionUIPack'].map(presentationPart => {
             return (
-              <div 
+              <div
                 key={presentationPart}
                 className="checkbox"
               >
-                <input 
+                <input
                   id={presentationPart}
                   type="checkbox"
                   checked={this.state.visibility[presentationPart]}
-                  onChange={()=> this.toggleVisibility(presentationPart)}   
+                  onChange={()=> this.toggleVisibility(presentationPart)}
                 />
                 <label htmlFor={presentationPart}>
                   {presentationPart}
-                </label> 
+                </label>
               </div>
             )
           })
-        }          
+        }
         </div>
 
         <div className="content-container">
         {
-          this.state.visibility['CSS'] 
+          this.state.visibility['CSS']
           ? <div>
               <h4> CSS </h4>
               <PlainCss />
@@ -66,26 +66,26 @@ class App extends Component {
           : null
         }
         {
-          this.state.visibility['ReactCSSTransitionGroup'] 
+          this.state.visibility['ReactCSSTransitionGroup']
           ? <div>
               <h4> ReactCSSTransitionGroup </h4>
           <CSSTransition />
             </div>
           : null
-        }  
-        { 
-          this.state.visibility['ReactMotionSpring'] 
+        }
+        {
+          this.state.visibility['ReactMotionSpring']
           ? <div className="react-motion-container">
               <RMSpring /> 
               <RMSpring2 />
             </div>
-          : null  
-        }  
+          : null
+        }
         {
-          this.state.visibility['ReactMotionTransitionMotion'] 
+          this.state.visibility['ReactMotionTransitionMotion']
           ? <RMTransitionMotion />
-          : null 
-        }  
+          : null
+        }
 
         { this.state.visibility['ReactMotionUIPack']
           ? <ReactMotionUIPack/>  : null

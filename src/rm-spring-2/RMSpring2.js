@@ -10,7 +10,7 @@ class RMSpring extends Component {
         {value => {
           let style = {
             transform: `translate(100px, ${value.y}px) scale(${value.z})`
-          }
+          };
 
           return <div style={style} className="spring-block"></div>
         }}

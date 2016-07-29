@@ -69,7 +69,7 @@ class RMTransitionMotion extends Component {
   }
 
   render() {
-    let blocksState 
+    let blocksState
 
     if(this.state.display === 'none') {
       blocksState = [];
@@ -78,10 +78,10 @@ class RMTransitionMotion extends Component {
       ?  this.state.blocks
       :  this.state.blocks.filter((block) => block.id % 2 === 0);
     }
-    
+
     return (
       <div className="rm-transition-motion">
-      
+        <h3> React motion TransitionMotion component </h3>
         <div>
           <button
             onClick={this.handleToggle}
@@ -99,7 +99,8 @@ class RMTransitionMotion extends Component {
           >
             Click to hide all
           </button>
-        </div>  
+        </div>
+        <div>
           <TransitionMotion
             willLeave={this.willLeave}
             willEnter={this.willEnter}
@@ -127,7 +128,8 @@ class RMTransitionMotion extends Component {
           }
         
           </TransitionMotion>
-        <div className="clear-fix"></div>
+          <div className="clear-fix"></div>
+        </div>
       </div>
     );
   }
