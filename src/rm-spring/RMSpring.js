@@ -10,8 +10,7 @@ class RMSpring extends Component {
         {value => {
           let style = {
             width: value.x,
-            height: value.x, 
-            position: 'absolute',
+            height: value.x,
             top: value.x*0.25,
             left: value.x*0.25,
             border: '1px solid red',
